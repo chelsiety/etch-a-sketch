@@ -1,0 +1,11 @@
+
+
+.title-name {
+    font-family: 'Yellowtail',  'Brush Script MT', cursive, sans-serif;
+    font-size: 50px;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: hsl(212, 33%, 81%);
+}
