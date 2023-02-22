@@ -6,21 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-a-Sketch</title>
 
-
     <link rel="stylesheet" href="style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Yellowtail&display=swap" rel="stylesheet">
 
-
-
     <script src="app.js" defer></script>
 </head>
 <body>
     <h1 class="title-name">Etch-a-Sketch</h1>
-
-
-
+    <div class="tool-panel">
+        <div class="draw-mode">Draw mode
+            <button id="hover-button" class="draw-mode-button">Hover</button>
+            <button id="click-drag-button" class="draw-mode-button">Click and drag</button>
+        </div>
+        <div class="color-mode">
+            <button id="color-button" class="color-mode-button">Color</button>
+            <button id="rainbow-button" class="color-mode-button">Rainbow</button>
+            <button id="grayscale-button" class="color-mode-button">Grayscale</button>
+        </div>
+        <div class="remove-color-mode">
+            <button id="erase-button" class="remove-color-mode-button">Erase</button>
+            <button id="clear-button" class="remove-color-mode-button">Clear</button>
+        </div>
+        <div class="grid-options">
+            <div id="grid-color" class="grid-option-label">Grid color</div>
+            <div id="grid-lines" class="grid-option-label">Grid lines</div>
+        </div>
+        <div class="grid-size-section">
+            <div class="grid-size-label">16 x 16</div>
+            <div class="grid slider">Grid slider</div>
+        </div>
+    </div>
 </body>
 </html>
