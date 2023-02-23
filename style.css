@@ -25,14 +25,40 @@ button {
     font-size: 20px;
 }
 
+
+.tool-and-grid-paper-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .tool-panel {
     height: 650px;
     width: 450px;
     background: #f6f6f6;
     margin-right: 100px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-.tool-and-grid-paper-container {
+
+.draw-mode-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.color-mode-button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-options-container {
     display: flex;
     justify-content: center;
     align-items: center;

@@ -5,6 +5,9 @@ const gridSizeDisplayLabel = document.querySelector('label[for="grid-size"]');
 
 
 
+createGrid(16, 16);
+
+
 // Event listeners
 gridSlider.addEventListener('input', displayGridSize)
 gridSlider.addEventListener('change', createGrid)
@@ -24,7 +27,7 @@ function createGrid(rows, cols) {
     };
 };
 
-createGrid(16, 16);
+
 
 function displayGridSize() {
     gridSizeDisplayLabel.textContent = `Grid size: ${gridSlider.value} x ${gridSlider.value}`
