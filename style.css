@@ -1,10 +1,11 @@
 :root {
     --grid-rowNum: 1;
     --grid-colNum: 1;
+    --grid-color:  hsl(204, 12%, 67%);
 }
 
 .title-name {
-    font-family: 'Yellowtail',  'Brush Script MT', cursive, sans-serif;
+    font-family: 'Yellowtail', 'Brush Script MT', cursive, sans-serif;
     font-size: 48px;
 
     display: flex;
@@ -77,7 +78,7 @@ button {
 
 .grid-cell {
     background-color: hsl(0, 0%, 100%);
-    outline: 1px solid hsl(204, 12%, 67%);
+    outline: 1px solid var(--grid-color);
 }
 
 #grid-size-slider {
