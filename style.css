@@ -53,3 +53,9 @@ button {
     background-color: hsl(0, 0%, 100%);
     outline: 1px solid hsl(204, 12%, 67%);
 }
+
+#grid-size-slider {
+    width: 250px;
+    height: 10px;
+}
+
