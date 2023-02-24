@@ -4,16 +4,26 @@ const gridSlider = document.querySelector("#grid-size-slider");
 const gridSizeDisplayLabel = document.querySelector('label[for="grid-size"]');
 const colorModeButtons = document.querySelectorAll(".color-mode-button");
 
-let defaultColorMode = "custom-color"; // default
+const customColorPicker = document.querySelector("#custom-color-picker");
+
+// let defaultColorMode = "custom-color"; // default
 
 
-createGrid(16, 16);
+
 
 
 
 // EVENT LISTENERS
 gridSlider.addEventListener('input', displayGridSize)
 gridSlider.addEventListener('change', createGrid)
+
+/*
+customColorPicker.addEventListener('input', ()=> {
+    console.log(customColorPicker.value)
+    CELL.style.backgroundColor = customColorPicker.value
+
+});
+*/
 
 // Mouse state tracker
 document.body.addEventListener('mousedown', () => {
@@ -24,12 +34,23 @@ document.body.addEventListener('mouseup', ()=> {
 })
 
 
-colorModeButtons.forEach(colorButton => colorButton.addEventListener('click', getColorMode));
+// colorModeButtons.forEach(colorButton => colorButton.addEventListener('click', getColorMode));
 
 
 
 
 // FUNCTIONS
+
+setUpDefaultSettings()
+
+function setUpDefaultSettings() {
+
+    // Set up grid
+    let rows = gridSlider.value;
+    let cols = gridSlider.value;
+    createGrid(rows, cols);
+
+}
 
 function createGrid(rows, cols) {
     rows = gridSlider.value;
@@ -45,12 +66,8 @@ function createGrid(rows, cols) {
         grid.appendChild(cell);
 
 
-        cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = "black" )
+        cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = customColorPicker.value )
     };
-
-
-
-
 
 };
 
@@ -58,6 +75,10 @@ function displayGridSize() {
     gridSizeDisplayLabel.textContent = `Grid size: ${gridSlider.value} x ${gridSlider.value}`
 }
 
+
+
+
+/*
 
 function getColorMode(buttonClickedEvent){
 
@@ -76,6 +97,10 @@ function getColorMode(buttonClickedEvent){
     else if (colorMode === 'grayscale'){
         console.log("get grayscale function")
     }
+    else if (colorMode === 'erase') {
+        console.log('erase')
+    }
     console.log(colorMode);
 }
 
+*/

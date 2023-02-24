@@ -26,18 +26,24 @@
             </div>
             <div class="color-mode">Color mode
                 <div class="color-mode-button-container">
-                    <button id="custom-color-button" class="color-mode-button" value="custom-color">Custom color</button>
-                    <button id="random-color-button" class="color-mode-button" value="random-color">Random color</button>
-                    <button id="rainbow-button" class="color-mode-button" value="rainbow">Rainbow</button>
-                    <button id="grayscale-button" class="color-mode-button" value="grayscale">Grayscale</button>
+                    <button id="custom-color-button" class="color-mode-button" value="custom-color">
+                        <input type="color" id="custom-color-picker" class="color-picker" value="#000000">
+                        Custom color
+                    </button>
+                    <button id="random-color-button" class="color-mode-button" data-color-button-name="random-color">Random color</button>
+                    <button id="rainbow-button" class="color-mode-button" data-color-button-name="rainbow">Rainbow</button>
+                    <button id="grayscale-button" class="color-mode-button" data-color-button-name="grayscale">Grayscale</button>
                 </div>
             </div>
             <div class="remove-color-mode">
-                <button id="erase-button" class="remove-color-mode-button" value="erase">Erase</button>
-                <button id="clear-button" class="remove-color-mode-button" value="clear">Clear</button>
+                <button id="erase-button" class="color-mode-button" data-color-button-name="erase">Erase</button>
+                <button id="clear-button" class="clear-mode-button" data-color-button-name="clear">Clear</button>
             </div>
             <div class="grid-options-container">
-                <div id="grid-color" class="grid-option-label">Grid color</div>
+                <div id="grid-color" class="grid-option-label">
+                    <input type="color" id="grid-color-picker" class="color-picker" value="#a1adb5">
+                    Grid color
+                </div>
                 <div id="grid-lines" class="grid-option-label">Grid lines</div>
             </div>
             <div class="grid-size-container">
