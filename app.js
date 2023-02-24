@@ -5,6 +5,7 @@ const gridSizeDisplayLabel = document.querySelector('label[for="grid-size"]');
 const colorModeButtons = document.querySelectorAll(".color-mode-button");
 
 const customColorPicker = document.querySelector("#custom-color-picker");
+const customColorButton = document.querySelector('#custom-color-button')
 
 // let defaultColorMode = "custom-color"; // default
 
@@ -33,8 +34,12 @@ document.body.addEventListener('mouseup', ()=> {
     mouseDown = false;
 })
 
-
-// colorModeButtons.forEach(colorButton => colorButton.addEventListener('click', getColorMode));
+// Loop through the buttons and add the active class to the current/clicked button
+colorModeButtons.forEach(colorButton => colorButton.addEventListener('click', function() {
+    document.querySelector('.active').classList.remove('active');
+    console.log(colorButton.dataset.name);
+    colorButton.classList.add('active');
+}));
 
 
 
@@ -49,6 +54,8 @@ function setUpDefaultSettings() {
     let rows = gridSlider.value;
     let cols = gridSlider.value;
     createGrid(rows, cols);
+
+    customColorButton.classList.add('active')
 
 }
 
@@ -66,7 +73,7 @@ function createGrid(rows, cols) {
         grid.appendChild(cell);
 
 
-        cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = customColorPicker.value )
+        cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = customColorPicker.value)
     };
 
 };

@@ -24,8 +24,20 @@ body {
 button {
     font-family: 'Open Sans', sans-serif;
     font-size: 20px;
+    background-color: hsl(217, 10%, 84%);
+    border: 0;
+    border-radius: 5px;
+    padding: 8px;
+    width: 200px;
 }
 
+.color{
+    margin: 8px 0;
+}
+
+.active, .btn:hover{
+    background-color: hsl(209, 73%, 71%);
+}
 
 .tool-and-grid-paper-container {
     display: flex;
