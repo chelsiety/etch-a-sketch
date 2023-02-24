@@ -39,23 +39,16 @@ colorModeButtons.forEach(colorButton => colorButton.addEventListener('click', fu
 
 // Clear grid 
     clearButton.addEventListener('click', () => {
-        console.log('clear btn click')
-    const cells = document.querySelectorAll('.grid-cell');
-
-    cells.forEach(cell => {
-        console.log('clear btn no color')
-        cell.style.backgroundColor = null;
-    }); 
-    
-    /*for (let i = 0; i < cells.length; i++) {
-        cells[i].style.backgroundColor = null;
-        console.log('clear btn no color')
-    }*/
+        const cells = document.querySelectorAll('.grid-cell');
+   
+        cells.forEach(cell => {
+            cell.style.backgroundColor = null;
+        }); 
+});
 
 
-    //  cell.style.backgroundColor = ""
-    //  cell.style.backgroundColor = null
-})
+
+
 
 // FUNCTIONS
 
