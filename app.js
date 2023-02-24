@@ -6,7 +6,7 @@ const colorModeButtons = document.querySelectorAll(".color-mode-button");
 
 const customColorPicker = document.querySelector("#custom-color-picker");
 const customColorButton = document.querySelector('#custom-color-button')
-
+const clearButton = document.querySelector('#clear-button')
 // let defaultColorMode = "custom-color"; // default
 
 
@@ -15,16 +15,11 @@ const customColorButton = document.querySelector('#custom-color-button')
 
 
 // EVENT LISTENERS
+
+// Change grid size
 gridSlider.addEventListener('input', displayGridSize)
 gridSlider.addEventListener('change', createGrid)
 
-/*
-customColorPicker.addEventListener('input', ()=> {
-    console.log(customColorPicker.value)
-    CELL.style.backgroundColor = customColorPicker.value
-
-});
-*/
 
 // Mouse state tracker
 document.body.addEventListener('mousedown', () => {
@@ -42,7 +37,25 @@ colorModeButtons.forEach(colorButton => colorButton.addEventListener('click', fu
 }));
 
 
+// Clear grid 
+    clearButton.addEventListener('click', () => {
+        console.log('clear btn click')
+    const cells = document.querySelectorAll('.grid-cell');
 
+    cells.forEach(cell => {
+        console.log('clear btn no color')
+        cell.style.backgroundColor = null;
+    }); 
+    
+    /*for (let i = 0; i < cells.length; i++) {
+        cells[i].style.backgroundColor = null;
+        console.log('clear btn no color')
+    }*/
+
+
+    //  cell.style.backgroundColor = ""
+    //  cell.style.backgroundColor = null
+})
 
 // FUNCTIONS
 
@@ -60,6 +73,10 @@ function setUpDefaultSettings() {
 }
 
 function createGrid(rows, cols) {
+    // Clear content of grid element and its inner tags. Clear current grid to remove existing bgcolor on grid cells when changing grid size. 
+    grid.innerHTML = ""; 
+  
+
     rows = gridSlider.value;
     cols = gridSlider.value;
 
