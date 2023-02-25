@@ -60,8 +60,7 @@ function setUpDefaultSettings() {
     let cols = gridSlider.value;
     createGrid(rows, cols);
 
-    customColorButton.classList.add('active')
-
+    customColorButton.classList.add('active');
 }
 
 function createGrid(rows, cols) {
