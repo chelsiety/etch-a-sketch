@@ -75,6 +75,8 @@ function createGrid(rows, cols) {
         cell.classList.add("grid-cell");
         grid.appendChild(cell);
 
+        // Event listeners in grid
+        // cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = setColorMode());
 
         cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = customColorPicker.value)
     };
