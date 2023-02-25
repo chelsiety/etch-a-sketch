@@ -85,8 +85,9 @@ function createGrid(rows, cols) {
 
         cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = customColorPicker.value)
     };
-
-};
+        // cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = getRandomColor());
+         //cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = getRainbow());
+        cell.addEventListener('mouseover', () => getGrayScale(cell));
 
 function displayGridSize() {
     gridSizeDisplayLabel.textContent = `Grid size: ${gridSlider.value} x ${gridSlider.value}`
