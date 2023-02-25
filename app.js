@@ -63,10 +63,10 @@ function createGrid(rows, cols) {
     // Clear content of grid element and its inner tags. Clear current grid to remove existing bgcolor on grid cells when changing grid size. 
     grid.innerHTML = ""; 
   
-
     rows = gridSlider.value;
     cols = gridSlider.value;
 
+    // Change the value of the CSS variables in JavaScript
     grid.style.setProperty('--grid-rowNum', rows);
     grid.style.setProperty('--grid-colNum', cols);
 
@@ -79,11 +79,13 @@ function createGrid(rows, cols) {
         // Event listeners in grid
         // cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = setColorMode());
 
-        cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = customColorPicker.value)
-    };
         // cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = getRandomColor());
          //cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = getRainbow());
         cell.addEventListener('mouseover', () => getGrayScale(cell));
+
+        // cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = customColorPicker.value)
+    };
+}
 
 function displayGridSize() {
     gridSizeDisplayLabel.textContent = `Grid size: ${gridSlider.value} x ${gridSlider.value}`
@@ -123,8 +125,25 @@ function getGrayScale(cell) {
 };
 
 /*
+function setColorMode(currentGridCell) {
+    switch (colorMode) {
+        case "random-color":
+            getRandomColor(currentGridCell);
+            break;
+        case "rainbow":
+            getRainbow(currentGridCell);
+            break;
+        case "grayscale":
+            getGrayScale(currentGridCell);
+            break;
+        case "erase":
+            break;
+        default:
+            getcustomColor(currentGridCell);
+    }
+}
 
-function getColorMode(buttonClickedEvent){
+function setColorMode(buttonClickedEvent){
 
     const colorMode = buttonClickedEvent.target.value;
 
