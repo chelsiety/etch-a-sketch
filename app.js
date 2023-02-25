@@ -108,6 +108,19 @@ function getRainbow() {
     return rainbowColorValue;
 }
 
+function getGrayScale(cell) {
+    /* Make the target grid cell get incrementally darker in shade by increasing the opacity with each pass of the mouseover event */
+
+    // Set grid cell background color to black 
+    cell.style.backgroundColor = 'hsl(0, 0%, 0%)'; 
+
+    let opacity = cell.style.opacity;      // Get current opacity value of cell
+    if (opacity < 1) {
+        cell.style.opacity = Number(cell.style.opacity) + 0.1;  // Increment the opacity value 
+    } else {
+        cell.style.opacity = 1;  // Limits the max opacity value
+    };
+};
 
 /*
 
