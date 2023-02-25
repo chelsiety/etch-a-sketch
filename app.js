@@ -14,6 +14,7 @@ const clearButton = document.querySelector('#clear-button')
 
 
 
+
 // EVENT LISTENERS
 
 // Change grid size
