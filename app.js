@@ -102,6 +102,15 @@ function getRandomColor() {
     return `rgb(${red}, ${green}, ${blue})`; 
 }
 
+// Set global initial hue value for getRainbow() function
+let hue = 0;  
+function getRainbow() {
+    // Set variable hue value, fixed saturation value and lightness value
+    let rainbowColorValue = `hsl(${hue}, 100%, 50%)`;  
+    hue += 10;
+    return rainbowColorValue;
+}
+
 
 /*
 
