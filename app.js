@@ -4,13 +4,8 @@ const gridSizeDisplayLabel = document.querySelector('label[for="grid-size"]');
 const colorModeButtons = document.querySelectorAll(".color-mode-button");
 
 const customColorPicker = document.querySelector("#custom-color-picker");
-const customColorButton = document.querySelector('#custom-color-button')
-const clearButton = document.querySelector('#clear-button')
-// let defaultColorMode = "custom-color"; // default
-
-
-
-
+const customColorButton = document.querySelector('#custom-color-button');
+const clearButton = document.querySelector('#clear-button');
 
 
 // EVENT LISTENERS
