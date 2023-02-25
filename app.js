@@ -1,4 +1,3 @@
-
 const grid = document.querySelector(".grid-container");
 const gridSlider = document.querySelector("#grid-size-slider");
 const gridSizeDisplayLabel = document.querySelector('label[for="grid-size"]');
@@ -8,7 +7,6 @@ const customColorPicker = document.querySelector("#custom-color-picker");
 const customColorButton = document.querySelector('#custom-color-button')
 const clearButton = document.querySelector('#clear-button')
 // let defaultColorMode = "custom-color"; // default
-
 
 
 
