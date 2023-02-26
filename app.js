@@ -7,6 +7,8 @@ const customColorPicker = document.querySelector("#custom-color-picker");
 const customColorButton = document.querySelector('#custom-color-button');
 const clearButton = document.querySelector('#clear-button');
 
+let colorMode = "custom-color" // default color mode
+
 
 // EVENT LISTENERS
 
@@ -14,22 +16,11 @@ const clearButton = document.querySelector('#clear-button');
 gridSlider.addEventListener('input', displayGridSize)
 gridSlider.addEventListener('change', createGrid)
 
-
-// Mouse state tracker
-document.body.addEventListener('mousedown', () => {
-    mouseDown = true;
-})
-document.body.addEventListener('mouseup', ()=> {
-    mouseDown = false;
-})
-
 // Loop through the buttons and add the active class to the current/clicked button
-colorModeButtons.forEach(colorButton => colorButton.addEventListener('click', function() {
-    document.querySelector('.active').classList.remove('active');
-    console.log(colorButton.dataset.name);
-    colorButton.classList.add('active');
+colorModeButtons.forEach(colorButton => colorButton.addEventListener('click', function(event) {
+    addActiveButtonClass(event);
+    getActiveColorButton(event);
 }));
-
 
 // Clear grid 
     clearButton.addEventListener('click', () => {
@@ -44,13 +35,9 @@ colorModeButtons.forEach(colorButton => colorButton.addEventListener('click', fu
 
 
 
-
 // FUNCTIONS
 
-setUpDefaultSettings()
-
 function setUpDefaultSettings() {
-
     // Set up grid
     let rows = gridSlider.value;
     let cols = gridSlider.value;
@@ -58,6 +45,36 @@ function setUpDefaultSettings() {
 
     customColorButton.classList.add('active');
 }
+
+function displayGridSize() {
+    gridSizeDisplayLabel.textContent = `Grid size: ${gridSlider.value} x ${gridSlider.value}`
+}
+
+function addActiveButtonClass(event){
+    document.querySelector('.active').classList.remove('active');
+    event.target.classList.add('active');
+}
+
+// Updates colorMode variable value when a color button is clicked
+function getActiveColorButton(event){
+    switch (event.target.dataset.name) {
+        case "random-color":
+            colorMode = "random-color";
+            break;
+        case "rainbow":
+            colorMode = "rainbow";
+            break;
+        case "grayscale":
+            colorMode = "grayscale";
+            break;
+        case "erase":
+            colorMode = "erase";
+            break;
+        default:
+            colorMode = "custom-color"; 
+    }
+}
+
 
 function createGrid(rows, cols) {
     // Clear content of grid element and its inner tags. Clear current grid to remove existing bgcolor on grid cells when changing grid size. 
@@ -77,37 +94,46 @@ function createGrid(rows, cols) {
         grid.appendChild(cell);
 
         // Event listeners in grid
-        // cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = setColorMode());
-
-        // cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = getRandomColor());
-         //cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = getRainbow());
-        cell.addEventListener('mouseover', () => getGrayScale(cell));
-
-        // cell.addEventListener('mouseover', (e) => e.target.style.backgroundColor = customColorPicker.value)
+        cell.addEventListener('mouseover', () => setColorMode(cell));        
     };
 }
 
-function displayGridSize() {
-    gridSizeDisplayLabel.textContent = `Grid size: ${gridSlider.value} x ${gridSlider.value}`
+function setColorMode(cell) {
+    //Use current colorMode value determined by the getActiveColorButton() function
+    switch (colorMode) {
+        case "random-color":
+            getRandomColor(cell);
+            break;
+        case "rainbow":
+            getRainbow(cell);
+            break;
+        case "grayscale":
+            getGrayScale(cell);
+            break;
+        case "erase":
+            getEraser(cell);
+            break;
+        default:
+            getCustomColor(cell);
+    }
 }
 
-
-function getRandomColor() {
+function getRandomColor(cell) {
     const red = Math.floor(Math.random() * 256);
     const green = Math.floor(Math.random() * 256);
     const blue = Math.floor(Math.random() * 256);
 
-    // Returns random RGB color code
-    return `rgb(${red}, ${green}, ${blue})`; 
+    // Makes the cell have a random RGB color code background color
+    cell.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`; 
 }
 
 // Set global initial hue value for getRainbow() function
 let hue = 0;  
-function getRainbow() {
+function getRainbow(cell) {
     // Set variable hue value, fixed saturation value and lightness value
     let rainbowColorValue = `hsl(${hue}, 100%, 50%)`;  
     hue += 10;
-    return rainbowColorValue;
+    cell.style.backgroundColor = rainbowColorValue;
 }
 
 function getGrayScale(cell) {
@@ -124,46 +150,15 @@ function getGrayScale(cell) {
     };
 };
 
-/*
-function setColorMode(currentGridCell) {
-    switch (colorMode) {
-        case "random-color":
-            getRandomColor(currentGridCell);
-            break;
-        case "rainbow":
-            getRainbow(currentGridCell);
-            break;
-        case "grayscale":
-            getGrayScale(currentGridCell);
-            break;
-        case "erase":
-            break;
-        default:
-            getcustomColor(currentGridCell);
-    }
+function getEraser(cell) {
+    cell.style.backgroundColor = null;
+    cell.style.opacity = null;
 }
 
-function setColorMode(buttonClickedEvent){
-
-    const colorMode = buttonClickedEvent.target.value;
-
-    // Draw when mouse is held down (mousedown)
-    if (colorMode === 'custom-color'){
-        console.log("get custom color function")
-    }
-    else if (colorMode === 'random-color'){
-        console.log("get random-color function")
-    }
-    else if (colorMode === 'rainbow'){
-        console.log("get rainbow function")
-    }
-    else if (colorMode === 'grayscale'){
-        console.log("get grayscale function")
-    }
-    else if (colorMode === 'erase') {
-        console.log('erase')
-    }
-    console.log(colorMode);
+function getCustomColor(cell){
+    cell.style.backgroundColor = customColorPicker.value;
 }
 
-*/
+
+// Initialization
+setUpDefaultSettings()
